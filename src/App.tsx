@@ -5,12 +5,12 @@ import TextArea from "./components/textArea";
 import ResultBox from "./components/resultBox";
 function App() {
   const [text, setText] = useState("");
-  const handleInput = async () => {
-    await setText(text);
-    // Initialize the word counter
-    let numWords = 0;
+  const [wordsArr, setWordsArr] = useState([]);
 
-    const wordsArr = text.split(" ");
+  const handleInput = () => {
+    setText(text);
+    const wordsArrVar: string[] = text.split(" ");
+    wordsArrVar.length ? setWordsArr(wordsArrVar) : null;
     console.log(wordsArr);
   };
 
