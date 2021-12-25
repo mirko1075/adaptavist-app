@@ -10,7 +10,7 @@ export default function textArea(props: Props) {
     <div className="">
       <textarea
         id="inputField"
-        onChange={() => handleInput()}
+        onChange={(e) => handleInput(e)}
         rows={10}
         cols={20}
         value={text}

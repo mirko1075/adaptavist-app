@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useCallback, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header";
 import TextArea from "./components/textArea";
 import ResultBox from "./components/resultBox";
 function App() {
   const [text, setText] = useState("");
-  const [wordsArr, setWordsArr] = useState([]);
-
-  const handleInput = () => {
-    setText(text);
-    const wordsArrVar: string[] = text.split(" ");
-    wordsArrVar.length ? setWordsArr(wordsArrVar) : null;
-    console.log(wordsArr);
+  const [wordsArr, setWordsArr] = useState<string[]>([]);
+  const handleInput = async (e: any) => {
+    await setText(e.target.value);
   };
+
+  useEffect(() => {
+    console.log("text :>> ", text);
+    const wordsArrVar: string[] | never[] = text
+      .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+      .split(" ");
+    setWordsArr(wordsArrVar);
+    console.log("wordsArr :>> ", wordsArr);
+  }, [text]);
 
   return (
     <div className="App">
