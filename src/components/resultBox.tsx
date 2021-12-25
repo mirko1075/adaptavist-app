@@ -16,11 +16,17 @@ export default function ResultBox(props: Props) {
       <div style={{ marginTop: 15, marginBottom: 15 }}>RESULT</div>
       <Table style={{ width: "25vw" }} responsive="sm" variant="dark" striped>
         <thead>
-          <tr>
-            <th onClick={() => sortFunction(0)}>
+          <tr style={{ border: "1px solid grey" }}>
+            <th
+              style={{ border: "1px solid grey" }}
+              onClick={() => sortFunction(0)}
+            >
               String {stringAsc ? <FaArrowDown /> : <FaArrowUp />}
             </th>
-            <th onClick={() => sortFunction(1)}>
+            <th
+              style={{ border: "1px solid grey" }}
+              onClick={() => sortFunction(1)}
+            >
               Ocurrences {numberAsc ? <FaArrowDown /> : <FaArrowUp />}
             </th>
           </tr>
@@ -29,8 +35,8 @@ export default function ResultBox(props: Props) {
           {wordsArrToRender.map((element: any, i: number) => {
             return (
               <tr>
-                <td>{element[0]}</td>
-                <td>{element[1]}</td>
+                <td style={{ border: "1px solid grey" }}>{element[0]}</td>
+                <td style={{ border: "1px solid grey" }}>{element[1]}</td>
               </tr>
             );
           })}
