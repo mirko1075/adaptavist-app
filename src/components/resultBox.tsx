@@ -1,40 +1,41 @@
-import React, { useEffect, useState } from "react";
-import ResultObj from "../DTO/wordsObj";
+import React from "react";
+import { Table } from "react-bootstrap";
+import { FaArrowsAltV, FaArrowDown, FaArrowUp } from "react-icons/fa";
+
 interface Props {
-  wordsArr: string[];
+  wordsArrToRender: [string, number];
+  sortFunction: Function;
+  numberAsc: boolean;
+  stringAsc: boolean;
 }
 export default function ResultBox(props: Props) {
-  const { wordsArr } = props;
-  const [flatArr, setFlatArr] = useState<string[]>([]);
-
-  const countOcurrences = (arr: string[], element: string) => {
-    return arr.reduce((acc, value) => {
-      return element === value ? acc + 1 : acc;
-    }, 0);
-  };
-
-  useEffect(() => {
-    const wordsSet = [...new Set(wordsArr)];
-    setFlatArr(wordsSet);
-  }, [wordsArr]);
+  const { wordsArrToRender, sortFunction, stringAsc, numberAsc } = props;
 
   return (
     <div className="result-container">
-      <div>RESULT</div>
-      <div className="line-container">
-        <div className="sort-field">Sort by string</div>
-        <div className="sort-field">Sort by ocurrence</div>
-      </div>
-      <div>
-        {flatArr.map((key) => {
-          return (
-            <div key={key} className="line-container">
-              <div>{key}</div>
-              <div>{countOcurrences(wordsArr, key)}</div>
-            </div>
-          );
-        })}
-      </div>
+      <div style={{ marginTop: 15, marginBottom: 15 }}>RESULT</div>
+      <Table style={{ width: "25vw" }} responsive="sm" variant="dark" striped>
+        <thead>
+          <tr>
+            <th onClick={() => sortFunction(0)}>
+              String {stringAsc ? <FaArrowDown /> : <FaArrowUp />}
+            </th>
+            <th onClick={() => sortFunction(1)}>
+              Ocurrences {numberAsc ? <FaArrowDown /> : <FaArrowUp />}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {wordsArrToRender.map((element: any, i: number) => {
+            return (
+              <tr>
+                <td>{element[0]}</td>
+                <td>{element[1]}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
     </div>
   );
 }

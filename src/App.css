@@ -1,11 +1,16 @@
 * {
-  color: #fff;
+  color: #424141;
 }
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 body {
-  background-color: #282c34;
+  background-color: #c2c7d3;
 }
 .App-header {
   height: 10vh;
@@ -14,27 +19,53 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #424141;
 }
 
 .TextArea-Container {
   display: flex;
 }
-
+textarea {
+  color: black;
+  resize: none;
+}
 .result-container {
+  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-items: center;
   justify-content: center;
+  padding: 15px;
 }
-.sort-field {
-  width: 50%;
+
+key-field {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.value-field {
+  display: flex;
+  justify-content: flex-start;
+}
+.calculate-button {
+  height: 5vh;
+  width: 12vw;
+  color: #232325;
+}
+.sort-button {
+  height: 10vh;
+  width: 30vw;
+  color: #07073f;
 }
 .line-container {
+  width: 50vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   align-items: center;
   justify-content: space-around;
+}
+table {
+  border-color: #424141;
 }
