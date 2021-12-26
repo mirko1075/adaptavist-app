@@ -1,16 +1,11 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { FaArrowsAltV, FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { StringOcurrenceEl } from "../CONF/types";
+import { ResultBoxProps } from "../CONF/interfaces";
 
-interface Props {
-  wordsArrToRender: [string, number];
-  sortFunction: Function;
-  numberAsc: boolean;
-  stringAsc: boolean;
-}
-export default function ResultBox(props: Props) {
+export default function ResultBox(props: ResultBoxProps) {
   const { wordsArrToRender, sortFunction, stringAsc, numberAsc } = props;
-
   return (
     <div className="result-container">
       <div style={{ marginTop: 15, marginBottom: 15 }}>RESULT</div>
@@ -32,7 +27,7 @@ export default function ResultBox(props: Props) {
           </tr>
         </thead>
         <tbody>
-          {wordsArrToRender.map((element: any, i: number) => {
+          {wordsArrToRender.map((element: StringOcurrenceEl) => {
             return (
               <tr>
                 <td style={{ border: "1px solid grey" }}>{element[0]}</td>

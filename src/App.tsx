@@ -1,19 +1,19 @@
-import React, { SyntheticEvent, useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header";
 import TextArea from "./components/textArea";
 import ResultBox from "./components/resultBox";
 import Commands from "./components/commands";
+import { StringOcurrenceEl } from "./CONF/types";
 function App() {
   const [showResult, setShowResult] = useState(false);
   const [text, setText] = useState("");
   const [wordsArr, setWordsArr] = useState<string[]>([]);
   const [stringAsc, setStringAsc] = useState(false);
   const [numberAsc, setNumberAsc] = useState(false);
-  const [wordsArrToRender, setWordsArrToRender] = useState<[string, number]>([
-    "",
-    0,
-  ]);
+  const [wordsArrToRender, setWordsArrToRender] = useState<StringOcurrenceEl[]>(
+    []
+  );
   const handleInput = async (e: any) => {
     e.target.value !== "" && (await setText(e.target.value));
   };
@@ -42,7 +42,7 @@ function App() {
   const sortArray = (order: number) => {
     //0=String
     //1=Numeric
-    const tempArr: [string, number] = [...wordsArrToRender];
+    const tempArr: StringOcurrenceEl[] = [...wordsArrToRender];
     order === 0
       ? tempArr.sort((a: any, b: any) => {
           setStringAsc(!stringAsc);

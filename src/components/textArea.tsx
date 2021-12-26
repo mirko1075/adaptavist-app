@@ -1,11 +1,9 @@
 import React, { SyntheticEvent } from "react";
-import { FloatingLabel, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
-interface Props {
-  text: string;
-  handleInput: Function;
-}
-export default function TextArea(props: Props) {
+import { TextAreaProps } from "../CONF/interfaces";
+
+export default function TextArea(props: TextAreaProps) {
   const { handleInput, text } = props;
   return (
     <div className="">
