@@ -66,10 +66,11 @@ function App() {
     setText("");
     setShowResult(false);
   };
+
   useEffect(() => {
     console.log("text :>> ", text);
     const wordsArrVar: string[] | never[] = text
-      .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>v“”\{\}\[\]\\\/]/gi, " ")
+      .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>v“”\\{\\}\\[\]\\\\/]/gi, " ")
       .split(" ")
       .filter((word) => word !== "")
       .map((word) => word.toLowerCase());
